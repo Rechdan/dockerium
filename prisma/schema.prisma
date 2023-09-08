@@ -1,0 +1,49 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["metrics"]
+  output          = "../src/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String   @id @unique @default(cuid())
+  email    String   @unique
+  password String
+  name     String
+  updated  DateTime @default(now()) @updatedAt
+  created  DateTime @default(now())
+}
+
+model Project {
+  id           String        @id @unique @default(cuid())
+  name         String
+  slug         String        @unique
+  updated      DateTime      @default(now()) @updatedAt
+  created      DateTime      @default(now())
+  environments Environment[]
+}
+
+model Environment {
+  id           String        @id @unique @default(cuid())
+  projectId    String
+  name         String
+  slug         String        @unique
+  updated      DateTime      @default(now()) @updatedAt
+  created      DateTime      @default(now())
+  project      Project       @relation(fields: [projectId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  applications Application[]
+}
+
+model Application {
+  id            String      @id @unique @default(cuid())
+  environmentId String
+  name          String
+  slug          String      @unique
+  updated       DateTime    @default(now()) @updatedAt
+  created       DateTime    @default(now())
+  environment   Environment @relation(fields: [environmentId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+}

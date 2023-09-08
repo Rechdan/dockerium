@@ -1,0 +1,8 @@
+# files
+.env
+dev.db
+
+# folders
+.next
+node_modules
+src/prisma
