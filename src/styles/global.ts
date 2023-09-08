@@ -27,8 +27,8 @@ const globalCss = css`
 
   html,
   body {
+    background-color: ${(p) => p.theme.colors.page.background};
     font-family: ${primaryFont.style.fontFamily};
-    background-color: ${(p) => p.theme.colors.black05};
     color: ${(p) => p.theme.colors.white};
   }
 

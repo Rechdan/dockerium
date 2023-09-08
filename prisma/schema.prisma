@@ -18,6 +18,14 @@ model User {
   created  DateTime @default(now())
 }
 
+model Github {
+  id           String        @id @unique @default(cuid())
+  accessToken  String
+  updated      DateTime      @default(now()) @updatedAt
+  created      DateTime      @default(now())
+  applications Application[]
+}
+
 model Project {
   id           String        @id @unique @default(cuid())
   name         String
@@ -41,9 +49,13 @@ model Environment {
 model Application {
   id            String      @id @unique @default(cuid())
   environmentId String
+  githubId      String
   name          String
   slug          String      @unique
+  repository    String
+  branch        String
   updated       DateTime    @default(now()) @updatedAt
   created       DateTime    @default(now())
   environment   Environment @relation(fields: [environmentId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  github        Github      @relation(fields: [githubId], references: [id], onUpdate: Cascade, onDelete: Cascade)
 }

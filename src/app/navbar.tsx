@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   flex: 0 0 auto;
-  background-color: ${(p) => p.theme.colors.black10};
+  background-color: ${(p) => p.theme.colors.black60};
   align-items: baseline;
   padding: 1rem 2rem;
   flex-flow: row;

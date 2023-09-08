@@ -2,10 +2,16 @@ import { DefaultTheme } from "styled-components";
 
 const theme: DefaultTheme = {
   colors: {
-    primary: "hsl(150,50%,50%)",
+    page: {
+      background: "hsl(0,0%,5%)",
+    },
 
-    black05: "hsla(0,0%,5%)",
-    black10: "hsla(0,0%,10%)",
+    primary: "hsl(10,50%,50%)",
+    primary50: "hsla(10,50%,50%,0.5)",
+    primary0: "hsla(10,50%,50%,0)",
+
+    black50: "hsla(0,0%,0%,0.5)",
+    black60: "hsla(0,0%,0%,0.6)",
 
     white: "hsl(0,0%,100%)",
   },

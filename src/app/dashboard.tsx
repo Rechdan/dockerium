@@ -28,7 +28,7 @@ const Content = styled.div`
   display: flex;
 `;
 
-const Dashboard = () => (
+const DashboardPage = () => (
   <Container>
     <Navbar />
     <Principal>
@@ -40,4 +40,4 @@ const Dashboard = () => (
   </Container>
 );
 
-export default Dashboard;
+export default DashboardPage;

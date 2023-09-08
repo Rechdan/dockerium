@@ -5,6 +5,8 @@
   "author": "Nelson Faiçal Rechdan <rechdanfr@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "db-generate": "prisma generate",
+    "db-push": "prisma db push",
     "dev": "next dev"
   },
   "dependencies": {
