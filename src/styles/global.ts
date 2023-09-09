@@ -30,6 +30,7 @@ const globalCss = css`
     background-color: ${(p) => p.theme.colors.page.background};
     font-family: ${primaryFont.style.fontFamily};
     color: ${(p) => p.theme.colors.white};
+    line-height: 1.5;
   }
 
   a {
@@ -40,6 +41,11 @@ const globalCss = css`
   label,
   button {
     cursor: pointer;
+  }
+
+  b,
+  strong {
+    font-weight: 700;
   }
 `;
 
