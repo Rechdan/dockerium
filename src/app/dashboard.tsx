@@ -6,7 +6,7 @@ import { Page } from "_/components/page";
 import Subnav from "_/app/subnav";
 import Topnav from "_/app/topnav";
 
-const DashboardPage = () => (
+const Dashboard = () => (
   <Page>
     <Topnav />
     <Subnav />
@@ -16,4 +16,4 @@ const DashboardPage = () => (
   </Page>
 );
 
-export default DashboardPage;
+export default Dashboard;

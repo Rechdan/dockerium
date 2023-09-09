@@ -1,6 +1,6 @@
-import { PageTitle } from "_/components/page";
-
 import useApi from "_/hooks/api";
+
+import { PageTitle } from "_/components/page";
 
 const ProjectsList = () => {
   const { data } = useApi<Api.Projects.Index>(["projects"]);
@@ -24,14 +24,11 @@ const ProjectsList = () => {
   );
 };
 
-const ProjectsHome = () => {
-  return (
-    <>
-      <PageTitle>Projects</PageTitle>
+const ProjectsIndex = () => (
+  <>
+    <PageTitle>Projects</PageTitle>
+    <ProjectsList />
+  </>
+);
 
-      <ProjectsList />
-    </>
-  );
-};
-
-export default ProjectsHome;
+export default ProjectsIndex;

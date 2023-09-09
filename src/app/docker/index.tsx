@@ -1,8 +1,8 @@
+import useApi from "_/hooks/api";
+
 import { Card, CardBody, CardTitle } from "_/components/card";
 import { Col, Row } from "_/components/container";
 import { PageTitle } from "_/components/page";
-
-import useApi from "_/hooks/api";
 
 const DockerInfo = () => {
   const { data } = useApi<Api.Docker.Index>(["docker"]);
@@ -51,13 +51,11 @@ const DockerInfo = () => {
   );
 };
 
-const DockerPage = () => {
-  return (
-    <>
-      <PageTitle>Docker</PageTitle>
-      <DockerInfo />
-    </>
-  );
-};
+const DockerIndex = () => (
+  <>
+    <PageTitle>Docker</PageTitle>
+    <DockerInfo />
+  </>
+);
 
-export default DockerPage;
+export default DockerIndex;

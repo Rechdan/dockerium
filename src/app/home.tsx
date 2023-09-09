@@ -1,8 +1,8 @@
+import useApi from "_/hooks/api";
+
 import { Card, CardBody, CardTitle } from "_/components/card";
 import { Col, Row } from "_/components/container";
 import { PageTitle } from "_/components/page";
-
-import useApi from "_/hooks/api";
 
 const DockeriumInfo = () => {
   const { data } = useApi<Api.Dashboard.Index>(["dashboard"]);
@@ -36,10 +36,9 @@ const DockeriumInfo = () => {
   );
 };
 
-const HomePage = () => (
+const HomeIndex = () => (
   <>
     <PageTitle>Home page</PageTitle>
-
     <Row>
       <Col $span={1 / 3}>
         <DockeriumInfo />
@@ -48,4 +47,4 @@ const HomePage = () => (
   </>
 );
 
-export default HomePage;
+export default HomeIndex;
