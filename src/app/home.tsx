@@ -1,8 +1,41 @@
+import { Button, Card, CardActions, CardContent, CardHeader, Typography } from "@mui/material";
+
+import { Link } from "react-router-dom";
+
 import useApi from "_/hooks/api";
 
-import { Card, CardBody, CardTitle } from "_/components/card";
-import { Col, Row } from "_/components/container";
-import { PageTitle } from "_/components/page";
+import { GridContainer, GridItem } from "_/components/shared/grid";
+import { PageTitle } from "_/components/shared/page";
+
+const DockerInfo = () => {
+  const { data } = useApi<Api.Docker.Index>(["docker"]);
+
+  if (!data) return null;
+
+  const { Containers, Images } = data;
+
+  return (
+    <Card>
+      <CardHeader title="Docker Info" subheader="Brief information of your running Docker" />
+
+      <CardContent>
+        <Typography>
+          <b>{Containers}</b> containers
+        </Typography>
+
+        <Typography>
+          <b>{Images}</b> images
+        </Typography>
+      </CardContent>
+
+      <CardActions>
+        <Button size="small" component={Link} to="/docker">
+          Open page
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};
 
 const DockeriumInfo = () => {
   const { data } = useApi<Api.Dashboard.Index>(["dashboard"]);
@@ -13,25 +46,25 @@ const DockeriumInfo = () => {
 
   return (
     <Card>
-      <CardTitle>This instance info</CardTitle>
+      <CardHeader title="Dockerium info" subheader="Informations of this Dockerium instance" />
 
-      <CardBody>
-        <p>
+      <CardContent>
+        <Typography>
           <b>{users}</b> users
-        </p>
+        </Typography>
 
-        <p>
+        <Typography>
           <b>{projects}</b> projects
-        </p>
+        </Typography>
 
-        <p>
+        <Typography>
           <b>{envs}</b> environments
-        </p>
+        </Typography>
 
-        <p>
+        <Typography>
           <b>{apps}</b> applications
-        </p>
-      </CardBody>
+        </Typography>
+      </CardContent>
     </Card>
   );
 };
@@ -39,11 +72,16 @@ const DockeriumInfo = () => {
 const HomeIndex = () => (
   <>
     <PageTitle>Home page</PageTitle>
-    <Row>
-      <Col $span={1 / 3}>
+
+    <GridContainer>
+      <GridItem>
         <DockeriumInfo />
-      </Col>
-    </Row>
+      </GridItem>
+
+      <GridItem>
+        <DockerInfo />
+      </GridItem>
+    </GridContainer>
   </>
 );
 

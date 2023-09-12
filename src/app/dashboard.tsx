@@ -1,19 +1,29 @@
+import styled from "styled-components";
+
+import { Box, Container } from "@mui/material";
+
 import { Outlet } from "react-router-dom";
 
-import { Container } from "_/components/container";
-import { Page } from "_/components/page";
+import Header from "_/app/header";
 
-import Subnav from "_/app/subnav";
-import Topnav from "_/app/topnav";
+const PageBox = styled(Box)`
+  min-height: 100vh;
+  flex-flow: column;
+  display: flex;
+`;
+
+const ContentContainer = styled(Container)`
+  flex: 1 1 auto;
+  padding: ${(p) => p.theme.spacing(3)};
+`;
 
 const Dashboard = () => (
-  <Page>
-    <Topnav />
-    <Subnav />
-    <Container $flexGrow="1" $flexShrink="1" $padding="2rem 1rem">
+  <PageBox>
+    <Header />
+    <ContentContainer>
       <Outlet />
-    </Container>
-  </Page>
+    </ContentContainer>
+  </PageBox>
 );
 
 export default Dashboard;

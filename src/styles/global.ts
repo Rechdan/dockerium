@@ -2,8 +2,8 @@ import { Roboto } from "next/font/google";
 
 import { createGlobalStyle, css } from "styled-components";
 
-const primaryFont = Roboto({
-  weight: ["400", "700"],
+export const primaryFont = Roboto({
+  weight: ["300", "400", "700", "900"],
   adjustFontFallback: true,
   display: "swap",
   fallback: [],
@@ -27,9 +27,9 @@ const globalCss = css`
 
   html,
   body {
-    background-color: ${(p) => p.theme.colors.page.background};
+    background-color: ${({ theme }) => theme.palette.background.default};
+    color: ${({ theme }) => theme.palette.text.primary};
     font-family: ${primaryFont.style.fontFamily};
-    color: ${(p) => p.theme.colors.white};
     line-height: 1.5;
   }
 

@@ -1,11 +1,18 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 
-import { ThemeProvider } from "styled-components";
+import { createTheme, ThemeProvider } from "@mui/material";
 
-import theme from "_/theme";
+import GlobalStyle, { primaryFont } from "_/styles/global";
 
-import GlobalStyle from "_/styles/global";
+const theme = createTheme({
+  typography: {
+    fontFamily: primaryFont.style.fontFamily,
+  },
+  palette: {
+    mode: "dark",
+  },
+});
 
 export default ({ Component, pageProps }: AppProps) => (
   <ThemeProvider theme={theme}>

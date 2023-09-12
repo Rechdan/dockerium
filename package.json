@@ -11,6 +11,8 @@
     "dev": "next dev"
   },
   "dependencies": {
+    "@mui/material": "5.14.8",
+    "@mui/styled-engine-sc": "5.14.8",
     "@octokit/core": "5.0.0",
     "@prisma/client": "5.2.0",
     "axios": "1.5.0",
@@ -18,18 +20,19 @@
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "7.46.1",
     "react-router-dom": "6.15.0",
     "styled-components": "6.0.7",
     "swr": "2.2.2"
   },
   "devDependencies": {
     "@types/dockerode": "3.3.19",
-    "@types/node": "20.5.9",
+    "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "@typescript-eslint/eslint-plugin": "6.6.0",
-    "@typescript-eslint/parser": "6.6.0",
-    "eslint": "8.48.0",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0",
+    "eslint": "8.49.0",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-perf": "3.3.1",

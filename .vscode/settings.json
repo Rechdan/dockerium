@@ -10,6 +10,7 @@
     { "orderLevel": 1, "regex": "^(next)(.*?)" },
     { "orderLevel": 100, "regex": "^(react|react-dom)$" },
     { "orderLevel": 200, "regex": "^(styled-components)(.*?)" },
+    { "orderLevel": 201, "regex": "^(@mui)(.*?)" },
     { "orderLevel": 300, "regex": "^(_/(api|db|docker|github))(.*?)" },
     { "orderLevel": 301, "regex": "^(_/theme)(.*?)" },
     { "orderLevel": 400, "regex": "^(_/styles)(.*?)" },
@@ -17,7 +18,7 @@
     { "orderLevel": 600, "regex": "^(_/components)(.*?)" },
     { "orderLevel": 700, "regex": "^(_/app)(.*?)" },
     { "orderLevel": 9999, "regex": "^_/(.*?)" },
-    { "orderLevel": 201, "regex": "^(.*?)" }
+    { "orderLevel": 299, "regex": "^(.*?)" }
   ],
   // typescript
   "typescript.tsserver.experimental.enableProjectDiagnostics": true

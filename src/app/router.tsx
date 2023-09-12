@@ -2,6 +2,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import Dashboard from "_/app/dashboard";
 import DockerIndex from "_/app/docker";
+import GithubIndex from "_/app/github";
 import HomeIndex from "_/app/home";
 import ProjectsIndex from "_/app/projects";
 
@@ -11,6 +12,7 @@ const Router = () => (
       <Route path="/*" element={<Dashboard />}>
         <Route path="" element={<HomeIndex />} />
         <Route path="docker" element={<DockerIndex />} />
+        <Route path="github" element={<GithubIndex />} />
         <Route path="projects/*">
           <Route path="" element={<ProjectsIndex />} />
           <Route path=":projectId/*">
