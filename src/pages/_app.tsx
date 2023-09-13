@@ -1,9 +1,20 @@
 import { AppProps } from "next/app";
+import { Roboto } from "next/font/google";
 import Head from "next/head";
 
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
-import GlobalStyle, { primaryFont } from "_/styles/global";
+import GlobalStyle from "_/styles/global";
+
+export const primaryFont = Roboto({
+  weight: ["300", "400", "700", "900"],
+  adjustFontFallback: true,
+  display: "swap",
+  fallback: [],
+  preload: true,
+  style: ["normal", "italic"],
+  subsets: ["latin", "latin-ext"],
+});
 
 const theme = createTheme({
   typography: {
@@ -20,6 +31,7 @@ export default ({ Component, pageProps }: AppProps) => (
       <title>Dockerium</title>
     </Head>
 
+    <CssBaseline />
     <GlobalStyle />
 
     <Component {...pageProps} />

@@ -1,30 +1,26 @@
-import { getData as dashboardIndex } from "_/pages/api/dashboard";
-import { getData as projectsIndex } from "_/pages/api/projects";
+import { execDashboard } from "_/pages/api/dashboard";
+import { execDocker } from "_/pages/api/docker";
+import { execProjects } from "_/pages/api/projects";
+import { execUserAuth } from "_/pages/api/user/auth";
+import { execUserLogin } from "_/pages/api/user/login";
 
 declare global {
   module Api {
     module Dashboard {
-      type Index = Awaited<ReturnType<typeof dashboardIndex>>;
+      type Index = Awaited<ReturnType<typeof execDashboard>>;
     }
 
     module Docker {
-      type Index = {
-        ID: string;
-        Containers: number;
-        ContainersRunning: number;
-        ContainersPaused: number;
-        ContainersStopped: number;
-        Images: number;
-        KernelVersion: string;
-        NCPU: number;
-        MemTotal: number;
-        Name: string;
-        ServerVersion: string;
-      };
+      type Index = Awaited<ReturnType<typeof execDocker>>;
     }
 
     module Projects {
-      type Index = Awaited<ReturnType<typeof projectsIndex>>;
+      type Index = Awaited<ReturnType<typeof execProjects>>;
+    }
+
+    module User {
+      type Login = Awaited<ReturnType<typeof execUserLogin>>;
+      type Auth = Awaited<ReturnType<typeof execUserAuth>>;
     }
   }
 }

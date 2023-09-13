@@ -2,7 +2,7 @@ import { NextApiHandler } from "next";
 
 import db from "_/db";
 
-export const getData = async () => {
+export const execProjects = async () => {
   const projects = await db.project.findMany({
     select: {
       id: true,
@@ -25,7 +25,7 @@ export const getData = async () => {
 
 const route: NextApiHandler = async (_req, res) => {
   try {
-    res.json(await getData());
+    res.json(await execProjects());
   } catch {
     res.status(500).end();
   }

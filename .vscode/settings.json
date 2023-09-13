@@ -14,9 +14,10 @@
     { "orderLevel": 300, "regex": "^(_/(api|db|docker|github))(.*?)" },
     { "orderLevel": 301, "regex": "^(_/theme)(.*?)" },
     { "orderLevel": 400, "regex": "^(_/styles)(.*?)" },
-    { "orderLevel": 500, "regex": "^(_/hooks)(.*?)" },
-    { "orderLevel": 600, "regex": "^(_/components)(.*?)" },
-    { "orderLevel": 700, "regex": "^(_/app)(.*?)" },
+    { "orderLevel": 500, "regex": "^(_/stores)(.*?)" },
+    { "orderLevel": 600, "regex": "^(_/hooks)(.*?)" },
+    { "orderLevel": 700, "regex": "^(_/components)(.*?)" },
+    { "orderLevel": 800, "regex": "^(_/app)(.*?)" },
     { "orderLevel": 9999, "regex": "^_/(.*?)" },
     { "orderLevel": 299, "regex": "^(.*?)" }
   ],
