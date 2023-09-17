@@ -42,9 +42,7 @@ const DockerIndex = () => {
           </Tabs>
         </Card>
 
-        <Card>
-          <Outlet />
-        </Card>
+        <Outlet />
       </Stack>
     </>
   );
