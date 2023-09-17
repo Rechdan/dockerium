@@ -71,7 +71,11 @@ const Login = () => {
         <CardContent>
           <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
             <Stack useFlexGap gap={2}>
-              {apiError && <Alert severity="error">{apiError}</Alert>}
+              {apiError && (
+                <Alert severity="error" variant="filled">
+                  {apiError}
+                </Alert>
+              )}
 
               <TextField
                 variant="filled"

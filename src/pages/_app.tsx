@@ -2,7 +2,12 @@ import { AppProps } from "next/app";
 import { Roboto } from "next/font/google";
 import Head from "next/head";
 
+import { useEffect } from "react";
+
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+
+import { setDefaultOptions } from "date-fns";
+import { enUS } from "date-fns/locale";
 
 import GlobalStyle from "_/styles/global";
 
@@ -25,15 +30,23 @@ const theme = createTheme({
   },
 });
 
-export default ({ Component, pageProps }: AppProps) => (
-  <ThemeProvider theme={theme}>
-    <Head>
-      <title>Dockerium</title>
-    </Head>
+export default ({ Component, pageProps }: AppProps) => {
+  useEffect(() => {
+    setDefaultOptions({
+      locale: enUS,
+    });
+  }, []);
 
-    <CssBaseline />
-    <GlobalStyle />
+  return (
+    <ThemeProvider theme={theme}>
+      <Head>
+        <title>Dockerium</title>
+      </Head>
 
-    <Component {...pageProps} />
-  </ThemeProvider>
-);
+      <CssBaseline />
+      <GlobalStyle />
+
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+};

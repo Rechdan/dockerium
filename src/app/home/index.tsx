@@ -1,15 +1,14 @@
 import { Avatar, Card, CardContent, CardHeader, Chip, Stack, Tooltip } from "@mui/material";
 
 import { Link } from "react-router-dom";
-import useSWR from "swr";
 
-import api from "_/api";
+import useDashboard from "_/hooks/dashboard";
 
 import { GridContainer, GridItem } from "_/components/shared/grid";
 import { PageTitle } from "_/components/shared/page";
 
 const DockerInfo = () => {
-  const data = useSWR(["dashboard"], () => api.get<Api.Dashboard.Index>("/dashboard")).data?.data?.docker;
+  const data = useDashboard()?.data?.docker;
 
   if (!data) return null;
 
@@ -36,7 +35,7 @@ const DockerInfo = () => {
 };
 
 const DockeriumInfo = () => {
-  const data = useSWR(["dashboard"], () => api.get<Api.Dashboard.Index>("/dashboard")).data?.data?.dockerium;
+  const data = useDashboard()?.data?.dockerium;
 
   if (!data) return null;
 
