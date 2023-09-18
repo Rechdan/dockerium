@@ -1,11 +1,19 @@
+import { forwardRef } from "react";
+
 import styled from "styled-components";
 
-import { Table as MaterialTable } from "@mui/material";
+import { Table as MaterialTable, TableContainer, TableProps } from "@mui/material";
 
-const Table = styled(MaterialTable)`
+const StyledTable = styled(MaterialTable)`
   & tr:last-child td {
     border: 0;
   }
 `;
+
+const Table = forwardRef<HTMLTableElement, TableProps>((props, forwardedRef) => (
+  <TableContainer>
+    <StyledTable ref={forwardedRef} {...props} />
+  </TableContainer>
+));
 
 export default Table;

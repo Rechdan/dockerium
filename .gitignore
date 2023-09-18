@@ -1,6 +1,6 @@
 # files
 .env
-dev.db
+*.db
 
 # folders
 .next
