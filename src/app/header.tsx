@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import styled from "styled-components";
 
 import { GitHub } from "@mui/icons-material";
-import { Box, Container, Grid, IconButton, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Container, IconButton, Stack, Tab, Tabs, Typography } from "@mui/material";
 
 import { Link, useLocation } from "react-router-dom";
 
@@ -37,25 +37,19 @@ const Header = () => {
     <>
       <SBox>
         <Container>
-          <Grid container gap={3} py={2} alignItems="center">
-            <Grid item xs>
-              <Typography variant="h5" component={Link} to="/">
-                Dockerium
-              </Typography>
-            </Grid>
+          <Stack direction="row" useFlexGap gap={3} py={2} alignItems="center">
+            <Typography variant="h5" component={Link} to="/">
+              Dockerium
+            </Typography>
 
-            <Grid item xs="auto">
-              <Grid container gap={2} alignItems="center">
-                <Grid item xs="auto">
-                  <Link to="https://github.com/Rechdan/dockerium" target="_blank">
-                    <IconButton>
-                      <GitHub />
-                    </IconButton>
-                  </Link>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
+            <Stack flexGrow={1} direction="row" useFlexGap gap={2} justifyContent="flex-end" alignItems="center">
+              <Link to="https://github.com/Rechdan/dockerium" target="_blank">
+                <IconButton>
+                  <GitHub />
+                </IconButton>
+              </Link>
+            </Stack>
+          </Stack>
         </Container>
       </SBox>
 
