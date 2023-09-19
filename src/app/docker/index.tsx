@@ -20,17 +20,13 @@ const paths: Path[] = [
 const DockerIndex = () => {
   const pathname = useLocation().pathname;
 
-  const valueIndex = useMemo(
-    () =>
-      Math.max(
-        0,
-        paths.findIndex((p) => p.pathMatch.test(pathname))
-      ),
-    [pathname]
-  );
+  const valueIndex = useMemo(() => {
+    const index = paths.findIndex((p) => p.pathMatch.test(pathname));
+    return Math.max(0, index);
+  }, [pathname]);
 
   return (
-    <>
+    <Stack useFlexGap gap={3}>
       <PageTitle>Docker</PageTitle>
 
       <Stack direction="column" useFlexGap gap={3}>
@@ -44,7 +40,7 @@ const DockerIndex = () => {
 
         <Outlet />
       </Stack>
-    </>
+    </Stack>
   );
 };
 

@@ -4,8 +4,10 @@
   "importSorter.importStringConfiguration.quoteMark": "double",
   "importSorter.sortConfiguration.removeUnusedImports": true,
   "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
-  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "words",
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne",
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 160,
   "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.importStringConfiguration.trailingComma": "multiLine",
   "importSorter.sortConfiguration.customOrderingRules.rules": [
     { "orderLevel": 1, "regex": "^(next)(.*?)" },
     { "orderLevel": 100, "regex": "^(react|react-dom)$" },

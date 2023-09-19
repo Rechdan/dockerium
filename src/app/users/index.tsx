@@ -1,4 +1,4 @@
-import { Alert, Backdrop, Card, CircularProgress, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { Alert, Backdrop, Card, CircularProgress, Stack, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 
 import { formatDistance } from "date-fns";
 
@@ -7,7 +7,7 @@ import useUsersIndex from "_/hooks/users";
 import { PageTitle } from "_/components/shared/page";
 import Table from "_/components/shared/table";
 
-const UsersTable = () => {
+const ItemsTable = () => {
   const { data, isLoading } = useUsersIndex();
 
   if (!data || isLoading) {
@@ -56,11 +56,11 @@ const UsersTable = () => {
 };
 
 const UsersIndex = () => (
-  <>
+  <Stack useFlexGap gap={3}>
     <PageTitle>Users</PageTitle>
 
-    <UsersTable />
-  </>
+    <ItemsTable />
+  </Stack>
 );
 
 export default UsersIndex;

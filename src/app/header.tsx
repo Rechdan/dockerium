@@ -2,7 +2,8 @@ import { useMemo } from "react";
 
 import styled from "styled-components";
 
-import { Box, Container, Tab, Tabs, Typography } from "@mui/material";
+import { GitHub } from "@mui/icons-material";
+import { Box, Container, Grid, IconButton, Tab, Tabs, Typography } from "@mui/material";
 
 import { Link, useLocation } from "react-router-dom";
 
@@ -24,31 +25,37 @@ const SBox = styled(Box)`
   border-bottom: 1px solid ${(p) => p.theme.palette.divider};
 `;
 
-const Logo = styled(Box)`
-  padding: ${(p) => p.theme.spacing(2, 0)};
-`;
-
 const Header = () => {
   const pathname = useLocation().pathname;
 
-  const valueIndex = useMemo(
-    () =>
-      Math.max(
-        0,
-        paths.findIndex((p) => p.pathMatch.test(pathname))
-      ),
-    [pathname]
-  );
+  const valueIndex = useMemo(() => {
+    const index = paths.findIndex((p) => p.pathMatch.test(pathname));
+    return Math.max(0, index);
+  }, [pathname]);
 
   return (
     <>
       <SBox>
         <Container>
-          <Logo>
-            <Typography variant="h5" component={Link} to="/">
-              Dockerium
-            </Typography>
-          </Logo>
+          <Grid container gap={3} py={2} alignItems="center">
+            <Grid item xs>
+              <Typography variant="h5" component={Link} to="/">
+                Dockerium
+              </Typography>
+            </Grid>
+
+            <Grid item xs="auto">
+              <Grid container gap={2} alignItems="center">
+                <Grid item xs="auto">
+                  <Link to="https://github.com/Rechdan/dockerium" target="_blank">
+                    <IconButton>
+                      <GitHub />
+                    </IconButton>
+                  </Link>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
         </Container>
       </SBox>
 

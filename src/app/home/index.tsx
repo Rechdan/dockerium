@@ -74,7 +74,7 @@ const DockeriumInfo = () => {
 };
 
 const HomeIndex = () => (
-  <>
+  <Stack useFlexGap gap={3}>
     <PageTitle>Home page</PageTitle>
 
     <GridContainer>
@@ -86,7 +86,7 @@ const HomeIndex = () => (
         <DockerInfo />
       </GridItem>
     </GridContainer>
-  </>
+  </Stack>
 );
 
 export default HomeIndex;

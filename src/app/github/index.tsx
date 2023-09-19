@@ -1,4 +1,21 @@
-import { Alert, Backdrop, Card, CircularProgress, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { useCallback, useState } from "react";
+
+import {
+  Alert,
+  Backdrop,
+  Button,
+  Card,
+  CircularProgress,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  Stack,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 
 import { formatDistance } from "date-fns";
 
@@ -7,7 +24,36 @@ import useGithubsIndex from "_/hooks/githubs";
 import { PageTitle } from "_/components/shared/page";
 import Table from "_/components/shared/table";
 
-const GithubsTable = () => {
+const Add = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const open = useCallback(() => setIsOpen(true), []);
+  const close = useCallback(() => setIsOpen(false), []);
+
+  return (
+    <>
+      <Button variant="contained" size="small" onClick={open}>
+        Add
+      </Button>
+
+      <Dialog open={isOpen} onClose={close} fullWidth maxWidth="xs">
+        <DialogTitle>New GitHub</DialogTitle>
+        <DialogContent>OK</DialogContent>
+      </Dialog>
+    </>
+  );
+};
+
+const Actions = () => (
+  <Grid container>
+    <Grid item xs />
+    <Grid item xs="auto">
+      <Add />
+    </Grid>
+  </Grid>
+);
+
+const ItemsTable = () => {
   const { data, isLoading } = useGithubsIndex();
 
   if (!data || isLoading) {
@@ -54,11 +100,15 @@ const GithubsTable = () => {
 };
 
 const GithubsIndex = () => (
-  <>
-    <PageTitle>Github</PageTitle>
+  <Stack useFlexGap gap={3}>
+    <Stack useFlexGap gap={3} direction="row" alignItems="center">
+      <PageTitle>Github</PageTitle>
 
-    <GithubsTable />
-  </>
+      <Actions />
+    </Stack>
+
+    <ItemsTable />
+  </Stack>
 );
 
 export default GithubsIndex;
