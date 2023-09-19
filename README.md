@@ -20,3 +20,11 @@ docker run -d --name traefik --network dockerium -p 8080:8080 -p 80:80 -v /var/r
 - Dashboard
 
   ![IMG](/docs/imgs/dashboard.png)
+
+- Docker
+
+  ![IMG](/docs/imgs/docker.png)
+
+- Users
+
+  ![IMG](/docs/imgs/users.png)
