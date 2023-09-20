@@ -25,12 +25,13 @@ const DockerImages = () => {
             <TableCell>ID</TableCell>
             <TableCell>Labels</TableCell>
             <TableCell>Size</TableCell>
+            <TableCell>Containers</TableCell>
             <TableCell>Created</TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
-          {data.map(({ id, tags, size, created }) => (
+          {data.map(({ id, tags, size, containers, created }) => (
             <TableRow key={id} hover>
               <TableCell>{id}</TableCell>
 
@@ -41,6 +42,8 @@ const DockerImages = () => {
               </TableCell>
 
               <TableCell>{size}</TableCell>
+
+              <TableCell>{containers}</TableCell>
 
               <TableCell>{formatDistance(created, Date.now(), { addSuffix: true })}</TableCell>
             </TableRow>

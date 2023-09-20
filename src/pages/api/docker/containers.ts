@@ -5,7 +5,7 @@ import docker from "_/docker";
 export const execDockerContainers = async () =>
   await docker.listContainers().then((containers) =>
     containers.map(({ Id, Names, Image, NetworkSettings: { Networks }, Mounts, Created }) => ({
-      id: Id,
+      id: Id.substring(0, 12),
       names: Names,
       image: Image,
       networks: Object.keys(Networks),
