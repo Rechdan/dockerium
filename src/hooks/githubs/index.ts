@@ -11,7 +11,7 @@ export const refreshGithubsIndex = () => mutate(key);
 const useGithubsIndex = () => {
   const [jwt] = useUserSession((s) => [s.jwt]);
 
-  return useSWR(jwt && key, () => api.get<Api.Githubs.Index>(key).then((r) => r.data), { refreshInterval: 2000 });
+  return useSWR(jwt && key, () => api.get<Api.Githubs.Index>(key).then((r) => r.data));
 };
 
 export default useGithubsIndex;

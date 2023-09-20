@@ -11,7 +11,7 @@ export const refreshDashboard = () => mutate(key);
 const useDashboard = () => {
   const [jwt] = useUserSession((s) => [s.jwt]);
 
-  return useSWR(jwt && key, () => api.get<Api.Dashboard.Index>(key).then((r) => r.data), { refreshInterval: 2000 });
+  return useSWR(jwt && key, () => api.get<Api.Dashboard.Index>(key).then((r) => r.data));
 };
 
 export default useDashboard;

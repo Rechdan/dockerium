@@ -9,7 +9,7 @@ const key = ["user", "auth"].join("/");
 const useSession = () => {
   const [jwt] = useUserSession((s) => [s.jwt]);
 
-  const { data, isLoading } = useSWR(jwt && key, () => api.get<Api.User.Auth>(key), { refreshInterval: 2000 });
+  const { data, isLoading } = useSWR(jwt && key, () => api.get<Api.User.Auth>(key));
 
   if (isLoading && !data) {
     return null;
