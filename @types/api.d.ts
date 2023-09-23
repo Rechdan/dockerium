@@ -1,6 +1,7 @@
 import { execDashboard } from "_/pages/api/dashboard";
 import { execDockerContainers } from "_/pages/api/docker/containers";
 import { execDockerImages } from "_/pages/api/docker/images";
+import { execDockerImagesDownload } from "_/pages/api/docker/images/download";
 import { execGithubsIndex } from "_/pages/api/githubs";
 import { execProjectsIndex } from "_/pages/api/projects";
 import { execUserAuth } from "_/pages/api/user/auth";
@@ -16,6 +17,7 @@ declare global {
     module Docker {
       type Containers = Awaited<ReturnType<typeof execDockerContainers>>;
       type Images = Awaited<ReturnType<typeof execDockerImages>>;
+      type ImagesDownload = Awaited<ReturnType<typeof execDockerImagesDownload>>;
     }
 
     module Users {

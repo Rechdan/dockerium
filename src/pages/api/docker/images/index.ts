@@ -6,8 +6,9 @@ export const execDockerImages = async () => {
   const containers = await docker.listContainers();
 
   return await docker.listImages().then((images) =>
-    images.map(({ Id, RepoTags, Size, Created }) => ({
+    images.map(({ Id, RepoTags, Size, Created, RepoDigests }) => ({
       id: Id.substring(7, 12 + 7),
+      isRemote: RepoDigests && RepoDigests.length > 0,
       tags: RepoTags,
       size: Size,
       containers: containers.filter((c) => c.ImageID === Id).length,

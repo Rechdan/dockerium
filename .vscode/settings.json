@@ -15,6 +15,7 @@
     { "orderLevel": 201, "regex": "^(@mui)(.*?)" },
     { "orderLevel": 300, "regex": "^(_/(api|db|docker|github))(.*?)" },
     { "orderLevel": 301, "regex": "^(_/theme)(.*?)" },
+    { "orderLevel": 303, "regex": "^(_/imgs)(.*?)" },
     { "orderLevel": 400, "regex": "^(_/styles)(.*?)" },
     { "orderLevel": 500, "regex": "^(_/stores)(.*?)" },
     { "orderLevel": 600, "regex": "^(_/hooks)(.*?)" },

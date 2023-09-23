@@ -1,4 +1,5 @@
-import { Backdrop, Card, CircularProgress, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { Refresh } from "@mui/icons-material";
+import { Backdrop, Card, CircularProgress, IconButton, Stack, TableBody, TableCell, TableHead, TableRow, Tooltip } from "@mui/material";
 
 import { formatDistance } from "date-fns";
 
@@ -27,6 +28,7 @@ const DockerImages = () => {
             <TableCell>Size</TableCell>
             <TableCell>Containers</TableCell>
             <TableCell>Created</TableCell>
+            <TableCell />
           </TableRow>
         </TableHead>
 
@@ -46,6 +48,16 @@ const DockerImages = () => {
               <TableCell>{containers}</TableCell>
 
               <TableCell>{formatDistance(created, Date.now(), { addSuffix: true })}</TableCell>
+
+              <TableCell size="small">
+                <Stack direction="row" useFlexGap gap={1} justifyContent="flex-end" alignItems="center">
+                  <Tooltip title="Update image">
+                    <IconButton size="small" color="primary">
+                      <Refresh />
+                    </IconButton>
+                  </Tooltip>
+                </Stack>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

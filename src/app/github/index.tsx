@@ -3,32 +3,85 @@ import { useCallback, useState } from "react";
 import {
   Alert,
   Backdrop,
+  Box,
   Button,
   Card,
   CircularProgress,
   Dialog,
   DialogContent,
+  DialogContentText,
   DialogTitle,
-  Grid,
+  Link as MaterialLink,
   Stack,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
+  TextField,
 } from "@mui/material";
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import { formatDistance } from "date-fns";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { InferType } from "yup";
+
+import api from "_/api";
+
+import githubRepoHook from "_/imgs/github-settings-repo-hook.png";
+import githubRepo from "_/imgs/github-settings-repo.png";
 
 import useGithubsIndex from "_/hooks/githubs";
 
 import { PageTitle } from "_/components/shared/page";
 import Table from "_/components/shared/table";
 
+import { newGithubUserValidator } from "_/validators";
+
+type FormData = InferType<typeof newGithubUserValidator>;
+
 const Add = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [apiError, setApiError] = useState("");
+
+  const {
+    clearErrors,
+    formState: { errors },
+    handleSubmit,
+    register,
+    reset,
+  } = useForm<FormData>({
+    resolver: yupResolver(newGithubUserValidator),
+  });
 
   const open = useCallback(() => setIsOpen(true), []);
   const close = useCallback(() => setIsOpen(false), []);
+
+  const onExit = useCallback(() => {
+    clearErrors("root");
+
+    reset({
+      accessToken: "",
+    });
+  }, [clearErrors, reset]);
+
+  const onSubmit = useCallback<SubmitHandler<FormData>>(async (data) => {
+    try {
+      const { data: responseData } = await api.post<Api.User.Login>("/user/login", data);
+
+      if (responseData) {
+        const { jwt, error } = responseData;
+
+        if (jwt) {
+          // success message
+        } else if (error) {
+          setApiError(error);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
   return (
     <>
@@ -36,21 +89,68 @@ const Add = () => {
         Add
       </Button>
 
-      <Dialog open={isOpen} onClose={close} fullWidth maxWidth="xs">
+      <Dialog open={isOpen} onClose={close} onTransitionExited={onExit} fullWidth maxWidth="sm">
         <DialogTitle>New GitHub</DialogTitle>
-        <DialogContent>OK</DialogContent>
+
+        <DialogContent>
+          <Stack useFlexGap gap={2}>
+            <DialogContentText>
+              To generate an Access Token you can go{" "}
+              <MaterialLink component={Link} to="https://github.com/settings/tokens" target="_blank" underline="hover">
+                here
+              </MaterialLink>
+              .
+            </DialogContentText>
+
+            <Stack useFlexGap gap={1}>
+              <Stack component={Link} to={`${location.origin}${githubRepo.src}`} target="_blank">
+                <Box component="img" src={githubRepo.src} width="100%" height="auto" maxWidth={githubRepo.width} borderRadius={1} />
+              </Stack>
+
+              <Stack component={Link} to={`${location.origin}${githubRepoHook.src}`} target="_blank">
+                <Box component="img" src={githubRepoHook.src} width="100%" height="auto" maxWidth={githubRepoHook.width} borderRadius={1} />
+              </Stack>
+            </Stack>
+
+            <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
+              <Stack useFlexGap gap={2}>
+                {apiError && (
+                  <Alert severity="error" variant="filled">
+                    {apiError}
+                  </Alert>
+                )}
+
+                <TextField
+                  variant="filled"
+                  type="text"
+                  label={errors.accessToken?.message || "Access Token"}
+                  error={!!errors.accessToken}
+                  autoFocus
+                  inputProps={register("accessToken")}
+                />
+
+                <Stack direction="row" useFlexGap gap={2} justifyContent="flex-end">
+                  <Button type="reset" variant="text" onClick={close}>
+                    Close
+                  </Button>
+
+                  <Button type="submit" variant="contained">
+                    Continue
+                  </Button>
+                </Stack>
+              </Stack>
+            </Box>
+          </Stack>
+        </DialogContent>
       </Dialog>
     </>
   );
 };
 
 const Actions = () => (
-  <Grid container>
-    <Grid item xs />
-    <Grid item xs="auto">
-      <Add />
-    </Grid>
-  </Grid>
+  <Stack flexGrow={1} direction="row" useFlexGap gap={2} justifyContent="flex-end">
+    <Add />
+  </Stack>
 );
 
 const ItemsTable = () => {
