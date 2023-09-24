@@ -1,4 +1,4 @@
-import { Backdrop, Card, CircularProgress, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { Alert, Backdrop, Card, CircularProgress, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 
 import { formatDistance } from "date-fns";
 
@@ -14,6 +14,14 @@ const DockerContainers = () => {
       <Backdrop open>
         <CircularProgress />
       </Backdrop>
+    );
+  }
+
+  if (data.length < 1) {
+    return (
+      <Alert severity="info" variant="filled">
+        No containers found.
+      </Alert>
     );
   }
 

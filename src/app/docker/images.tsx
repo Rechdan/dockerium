@@ -1,5 +1,5 @@
 import { Refresh } from "@mui/icons-material";
-import { Backdrop, Card, CircularProgress, IconButton, Stack, TableBody, TableCell, TableHead, TableRow, Tooltip } from "@mui/material";
+import { Alert, Backdrop, Card, CircularProgress, IconButton, Stack, TableBody, TableCell, TableHead, TableRow, Tooltip } from "@mui/material";
 
 import { formatDistance } from "date-fns";
 
@@ -15,6 +15,14 @@ const DockerImages = () => {
       <Backdrop open>
         <CircularProgress />
       </Backdrop>
+    );
+  }
+
+  if (data.length < 1) {
+    return (
+      <Alert severity="info" variant="filled">
+        No images found.
+      </Alert>
     );
   }
 
