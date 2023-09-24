@@ -5,7 +5,20 @@ import { formatDistance } from "date-fns";
 
 import useDockerImages from "_/hooks/docker/images";
 
+import { PageTitle } from "_/components/shared/page";
 import Table from "_/components/shared/table";
+
+import AddImage from "_/app/docker/add-image";
+
+export const DockerImagesTitle = () => (
+  <Stack direction="row" useFlexGap gap={3}>
+    <PageTitle>Docker Images</PageTitle>
+
+    <Stack flexGrow={1} direction="row" useFlexGap gap={1} alignItems="center" justifyContent="flex-end">
+      <AddImage />
+    </Stack>
+  </Stack>
+);
 
 const DockerImages = () => {
   const { data, isLoading } = useDockerImages();

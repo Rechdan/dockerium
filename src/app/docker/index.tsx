@@ -2,9 +2,12 @@ import { useMemo } from "react";
 
 import { Card, Stack, Tab, Tabs } from "@mui/material";
 
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, Route, Routes, useLocation } from "react-router-dom";
 
 import { PageTitle } from "_/components/shared/page";
+
+import { DockerContainersTitle } from "_/app/docker/containers";
+import { DockerImagesTitle } from "_/app/docker/images";
 
 type Path = {
   label: string;
@@ -27,19 +30,21 @@ const DockerIndex = () => {
 
   return (
     <Stack useFlexGap gap={3}>
-      <PageTitle>Docker</PageTitle>
+      <Routes>
+        <Route path="containers/*" element={<DockerContainersTitle />} />
+        <Route path="images/*" element={<DockerImagesTitle />} />
+        <Route path="*" element={<PageTitle>Docker</PageTitle>} />
+      </Routes>
 
-      <Stack direction="column" useFlexGap gap={3}>
-        <Card>
-          <Tabs value={valueIndex} variant="scrollable">
-            {paths.map(({ label, to }, i) => (
-              <Tab key={label} label={label} component={Link} to={to} value={i} />
-            ))}
-          </Tabs>
-        </Card>
+      <Card>
+        <Tabs value={valueIndex} variant="scrollable">
+          {paths.map(({ label, to }, i) => (
+            <Tab key={label} label={label} component={Link} to={to} value={i} />
+          ))}
+        </Tabs>
+      </Card>
 
-        <Outlet />
-      </Stack>
+      <Outlet />
     </Stack>
   );
 };

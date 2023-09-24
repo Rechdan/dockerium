@@ -1,10 +1,23 @@
-import { Alert, Backdrop, Card, CircularProgress, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { Alert, Backdrop, Card, CircularProgress, Stack, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 
 import { formatDistance } from "date-fns";
 
 import useDockerContainers from "_/hooks/docker/containers";
 
+import { PageTitle } from "_/components/shared/page";
 import Table from "_/components/shared/table";
+
+import AddContainer from "_/app/docker/add-container";
+
+export const DockerContainersTitle = () => (
+  <Stack direction="row" useFlexGap gap={3}>
+    <PageTitle>Docker Containers</PageTitle>
+
+    <Stack flexGrow={1} direction="row" useFlexGap gap={1} alignItems="center" justifyContent="flex-end">
+      <AddContainer />
+    </Stack>
+  </Stack>
+);
 
 const DockerContainers = () => {
   const { data, isLoading } = useDockerContainers();
