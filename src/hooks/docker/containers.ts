@@ -11,7 +11,7 @@ export const refreshDockerContainers = () => mutate(key);
 const useDockerContainers = () => {
   const [jwt] = useUserSession((s) => [s.jwt]);
 
-  return useSWR(jwt && key, () => api.get<Api.Docker.Containers>(key).then((r) => r.data));
+  return useSWR(jwt && key, () => api.get<ApiDockerContainers>(key).then((r) => r.data));
 };
 
 export default useDockerContainers;

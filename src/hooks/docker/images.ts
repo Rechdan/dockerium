@@ -11,7 +11,7 @@ export const refreshDockerImages = () => mutate(key);
 const useDockerImages = () => {
   const [jwt] = useUserSession((s) => [s.jwt]);
 
-  return useSWR(jwt && key, () => api.get<Api.Docker.Images>(key).then((r) => r.data));
+  return useSWR(jwt && key, () => api.get<ApiDockerImages>(key).then((r) => r.data));
 };
 
 export default useDockerImages;

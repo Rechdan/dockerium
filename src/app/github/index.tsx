@@ -67,7 +67,7 @@ const Add = () => {
 
   const onSubmit = useCallback<SubmitHandler<FormData>>(async (data) => {
     try {
-      const { data: responseData } = await api.post<Api.User.Login>("/user/login", data);
+      const { data: responseData } = await api.post<ApiUserLogin>("/user/login", data);
 
       if (responseData) {
         const { jwt, error } = responseData;

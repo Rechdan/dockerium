@@ -11,7 +11,7 @@ export const refreshUsersIndex = () => mutate(key);
 const useUsersIndex = () => {
   const [jwt] = useUserSession((s) => [s.jwt]);
 
-  return useSWR(jwt && key, () => api.get<Api.Users.Index>(key).then((r) => r.data));
+  return useSWR(jwt && key, () => api.get<ApiUsers>(key).then((r) => r.data));
 };
 
 export default useUsersIndex;
