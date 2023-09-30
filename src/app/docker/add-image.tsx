@@ -1,6 +1,8 @@
 import { useCallback, useState } from "react";
 
-import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material";
+import { Button, Dialog, DialogContent, DialogTitle, Stack } from "@mui/material";
+
+import HubImagePicker from "_/components/hub-image-picker";
 
 const AddImage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +21,11 @@ const AddImage = () => {
       <Dialog open={isOpen} onClose={close} onTransitionExited={onExit} fullWidth maxWidth="sm">
         <DialogTitle>Add Image</DialogTitle>
 
-        <DialogContent></DialogContent>
+        <DialogContent>
+          <Stack useFlexGap gap={3}>
+            <HubImagePicker isOpen={isOpen} />
+          </Stack>
+        </DialogContent>
       </Dialog>
     </>
   );

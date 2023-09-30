@@ -6,6 +6,7 @@ const nextConfig = {
   i18n: { defaultLocale: "en", locales: ["en"] },
   output: "standalone",
   reactStrictMode: true,
+  rewrites: async () => [{ source: "/hub/:path*", destination: "https://hub.docker.com/:path*" }],
 };
 
 module.exports = nextConfig;
