@@ -21,12 +21,15 @@ import {
 } from "@mui/material";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { formatDistance } from "date-fns";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { InferType } from "yup";
 
 import api from "_/api";
+
+import { fromNow } from "_/helpers";
+
+import { newGithubUserValidator } from "_/validators";
 
 import githubRepoHook from "_/imgs/github-settings-repo-hook.png";
 import githubRepo from "_/imgs/github-settings-repo.png";
@@ -35,8 +38,6 @@ import useGithubsIndex from "_/hooks/githubs";
 
 import { PageTitle } from "_/components/shared/page";
 import Table from "_/components/shared/table";
-
-import { newGithubUserValidator } from "_/validators";
 
 type FormData = InferType<typeof newGithubUserValidator>;
 
@@ -189,8 +190,8 @@ const ItemsTable = () => {
             <TableRow key={id} hover>
               <TableCell>{id}</TableCell>
               <TableCell>{accessToken}</TableCell>
-              <TableCell>{formatDistance(updated, Date.now(), { addSuffix: true })}</TableCell>
-              <TableCell>{formatDistance(created, Date.now(), { addSuffix: true })}</TableCell>
+              <TableCell>{fromNow(new Date(updated))}</TableCell>
+              <TableCell>{fromNow(new Date(created))}</TableCell>
             </TableRow>
           ))}
         </TableBody>
